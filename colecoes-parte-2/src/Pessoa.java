@@ -1,10 +1,11 @@
 public class Pessoa {
     private String nome;
-    private String sexo;
+    private Sexo sexo;
 
-    public Pessoa(String nome, String sexo) {
+
+    public Pessoa(String nome, String sexoStr) {
         this.nome = nome;
-        this.sexo = sexo;
+        this.sexo = Sexo.paraString(sexoStr);
     }
 
     public String getNome() {
@@ -15,19 +16,11 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public String getSexo() {
+    public Sexo getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(Sexo sexo) {
         this.sexo = sexo;
-    }
-
-    @Override
-    public String toString() {
-        return "Pessoa{" +
-                "nome='" + nome + '\'' +
-                ", sexo='" + sexo + '\'' +
-                '}';
     }
 }

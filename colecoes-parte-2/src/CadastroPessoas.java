@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class CadastroPessoas {
     private List<Pessoa> arrayDePessoas = new ArrayList<>();
@@ -24,27 +23,17 @@ public class CadastroPessoas {
     }
 
     public void separaPorGrupos() {
-        List<Pessoa> sexoMasculino = new ArrayList<>();
-        List<Pessoa> sexoFeminino = new ArrayList<>();
+        Map<Sexo, List<Pessoa>> pessoasPorSexo = arrayDePessoas.stream()
+                .filter(p -> p.getSexo() != null)
+                .collect(Collectors.groupingBy(Pessoa :: getSexo));
 
-        for (Pessoa pessoa : arrayDePessoas) {
-            if (pessoa.getSexo().equalsIgnoreCase("masculino") || pessoa.getSexo().equalsIgnoreCase("m")) {
-                sexoMasculino.add(pessoa);
-            } else if (pessoa.getSexo().equalsIgnoreCase("feminino") || pessoa.getSexo().equalsIgnoreCase("f")) {
-                sexoFeminino.add(pessoa);
-            }
-        }
+        List<Pessoa> sexoMasculino = pessoasPorSexo.getOrDefault(Sexo.MASCULINO, Collections.emptyList());
+        List<Pessoa> sexoFeminino = pessoasPorSexo.getOrDefault(Sexo.FEMININO, Collections.emptyList());
 
         System.out.println("Pessoas do sexo masculino:");
-        for (Pessoa p : sexoMasculino) {
-            System.out.println(p);
-        }
+        sexoMasculino.forEach(p -> System.out.println(p.getNome()));
 
-        System.out.println("------------------------- || -------------------------");
-
-        System.out.println("Pessoas do sexo feminino:");
-        for (Pessoa p : sexoFeminino) {
-            System.out.println(p);
-        }
+        System.out.println("\nPessoas do sexo feminino:");
+        sexoFeminino.forEach(p -> System.out.println(p.getNome()));
     }
 }
