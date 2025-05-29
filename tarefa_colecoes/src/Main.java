@@ -3,15 +3,8 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Digite alguns nomes separados por vírgula (,) ");
-        String nomes = sc.nextLine();
-        List<String> listaNomes = List.of(nomes.split(","));
-        for (String nome : listaNomes) {
-            System.out.println(nome);
-        }
-
         System.out.println("Digite nome e sexo da pessoa (Pedro - M, Renata - F): ");
+        Scanner sc = new Scanner(System.in);
         String nomeComSexo = sc.nextLine();
 
         // Divide a string na virgula
@@ -40,7 +33,5 @@ public class Main {
         System.out.println(sexoMasculino);
         System.out.println("Sexo feminino: ");
         System.out.println(sexoFeminino);
-
-
     }
 }
