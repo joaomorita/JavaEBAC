@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+<h:head><title>Novo Jogo</title></h:head>
+<h:body>
+    <h:form>
+        <h:outputLabel value="Nome:"/>
+        <h:inputText value="#{jogoController.jogo.nome}"/><br/>
+
+        <h:outputLabel value="Plataforma:"/>
+        <h:inputText value="#{jogoController.jogo.plataforma}"/><br/>
+
+        <h:outputLabel value="Status:"/>
+        <h:inputText value="#{jogoController.jogo.status}"/><br/>
+
+        <h:commandButton value="Salvar" action="#{jogoController.salvar}"/>
+        <h:link value="Voltar" outcome="index.xhtml"/>
+    </h:form>
+</h:body>
+</html>

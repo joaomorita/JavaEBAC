@@ -1,0 +1,20 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html" xmlns:f="http://java.sun.com/jsf/core">
+<h:head><title>CRUD de Jogos</title></h:head>
+<h:body>
+    <h1>Lista de Jogos</h1>
+    <h:form>
+        <h:dataTable value="#{jogoController.jogos}" var="j">
+            <h:column><f:facet name="header">Nome</f:facet>#{j.nome}</h:column>
+            <h:column><f:facet name="header">Plataforma</f:facet>#{j.plataforma}</h:column>
+            <h:column><f:facet name="header">Status</f:facet>#{j.status}</h:column>
+            <h:column>
+                <h:commandButton value="Editar" action="#{jogoController.editar(j)}"/>
+                <h:commandButton value="Excluir" action="#{jogoController.excluir(j)}"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+
+    <h:link value="Novo Jogo" outcome="formJogo.xhtml"/>
+</h:body>
+</html>
